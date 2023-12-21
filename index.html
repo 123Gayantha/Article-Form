@@ -102,6 +102,59 @@
 
       authorAddSection.parentNode.insertBefore(clone, authorAddSection.nextSibling);
     }
+    function saveFormData() {
+      //Conversion to JSON
+
+      // Get the form element by its ID
+      var form = document.getElementById('authorsSection');
+
+        
+       // Create a FormData object to collect form data
+      var formData = new FormData(form);
+       // Create an array to store author details
+      var authors = [];
+       // Select all elements with class form-section
+      var authorSections = document.querySelectorAll('.form-section');
+       
+      
+      // Iterate over each author section
+      authorSections.forEach(function(section) {
+        // Extract first and last names from the current author section
+        var author = {
+          fname: section.querySelector('[name="fname[]"]').value,
+          lname: section.querySelector('[name="lname[]"]').value,
+        };
+
+          // Add the author details to the array
+        authors.push(author);
+      });
+        // Create a data object with authors, date, article title, and other details
+      var data = {
+        authors: authors,
+        date: formData.get('date'),
+        articleTitle: formData.get('articleTitle'),
+        // Add other details form fields 
+      };
+      // Convert the data object to a formatted JSON string
+      var jsonData = JSON.stringify(data, null, 2);
+
+      // Create a Blob From the Jason Data  and create a download link with the Bob
+      
+      // Create a Blob from the JSON data
+      var blob = new Blob([jsonData], { type: 'application/json' });
+      
+      // Create a download link (<a> element)
+      var a = document.createElement('a');
+
+      // Set the href attribute to the URL of the Blob
+      a.href = URL.createObjectURL(blob);
+      
+      // Set the download attribute with the desired file name  
+      a.download = 'article_data.json';
+
+       // Trigger a click event on the link to initiate the download
+      a.click();
+    }
   </script>
 </body>
 </html>
