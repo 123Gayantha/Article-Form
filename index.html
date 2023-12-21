@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Information Form</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <form action="" method="post">
+    <div class="form-section" id="authorAddSection">
+      
+      <h1>Authors</h1>
+      <div class="form-row">
+        <label for="fname">First Name(s)</label>
+        <input type="text" id="fname" name="fname[]" placeholder="Enter your first name(s)..">
+      </div>
+      
+      <div class="form-row">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname[]" placeholder="Enter your last name..">
+      </div>
+      <button class="add-more-btn">Add More +</button>
+    </div>
+    <br>
+    <br>
+    
+    <div class="form-date">
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date">
+    </div>
+    <br>
+    
+    <div class="form-section">
+      <div class="form-row">
+      <label for="articleTitle">Article Title</label>
+      <input type="text" id="articleTitle" name="articleTitle" placeholder="Enter the article title..">
+    </div>
+  </div>
+  <br>
+  <br>
+  
+    
+    <div class="form-section-2">
+      <label for="source">Source Information</label>
+      <div class="form-row">
+        <label for="journal">Journal</label>
+        <input type="text" id="journal" name="journal" placeholder="Enter the journal..">
+      </div>
+
+      <div class="form-row">
+        <label for="volume">Volume</label>
+        <input type="text" id="volume" name="volume" placeholder="Enter the volume..">
+      </div>
+     
+      <div class="form-row">
+        <label for="issue">Issue</label>
+        <input type="text" id="issue" name="issue" placeholder="Enter the issue..">
+      </div>
+      
+      <div class="form-row">
+        <label for="articleNumber">Article Number</label>
+        <input type="text" id="articleNumber" name="articleNumber" placeholder="Enter the article number..">
+      </div>
+    </div>
+    
+    <div class="form-section-2">
+      <div class="form-row">
+      <label for="pageRange">Page Range</label>
+      <input type="number" id="pageRange1" name="pageRange1" placeholder="Starting page number..">
+      <input type="number" id="pageRange2" name="pageRange2" placeholder="Ending page number..">
+    </div>
+  </div>
+   
+  <div class="form-section-2">
+      <div class="form-row">
+      <label for="DOI">DOI</label>
+     
+      <input type="text" id="DOI" name="DOI" placeholder="Enter DOI..">
+    </div>
+  </div>
+  
+  <div class="form-section-2">
+    <div class="form-row">
+    <label for="URL">URL</label>
+   
+    <input type="text" id="URL" name="URL" placeholder="Enter URL..">
+  </div>
+</div>
+  </form>
+  <script>
+  function addAuthor() {
+      var authorAddSection = document.getElementById('authorAddSection');
+      var clone = authorAddSection.cloneNode(true);
+
+      // Clear values in the cloned input fields
+      var inputs = clone.querySelectorAll('input[type="text"]');
+      inputs.forEach(function(input) {
+        input.value = '';
+      });
+
+      authorAddSection.parentNode.insertBefore(clone, authorAddSection.nextSibling);
+    }
+  </script>
+</body>
+</html>
